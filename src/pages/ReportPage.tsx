@@ -62,7 +62,7 @@ const ReportPage = ({ property, onShowDetail, onReset }: ReportPageProps) => {
         <div className="header-top">
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
             <img 
-              src={`${import.meta.env.BASE_URL}logo.png`} 
+              src={`${import.meta.env.BASE_URL}logo.jpeg`} 
               alt="Logo" 
               style={{ width: '60px', height: '60px', borderRadius: '50%' }}
               onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}

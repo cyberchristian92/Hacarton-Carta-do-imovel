@@ -25,7 +25,7 @@ const LandingPage = ({ onSearch, onGovbrClick }: LandingPageProps) => {
   return (
     <div className="landing">
       <img 
-        src={`${import.meta.env.BASE_URL}logo.png`} 
+        src={`${import.meta.env.BASE_URL}logo.jpeg`} 
         alt="Carta do Imóvel Logo" 
         style={{ width: '150px', height: '150px', objectFit: 'contain', marginBottom: '1rem', borderRadius: '50%' }}
         onError={(e) => {
