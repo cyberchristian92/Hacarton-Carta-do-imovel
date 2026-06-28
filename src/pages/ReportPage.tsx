@@ -60,10 +60,18 @@ const ReportPage = ({ property, onShowDetail, onReset }: ReportPageProps) => {
 
       <div className="report-header">
         <div className="header-top">
-          <div className="property-title">
-            <h2>Fazenda {property.ownerName}</h2>
-            <p>{property.municipality} - {property.state}</p>
-            <p style={{ fontFamily: 'monospace', fontSize: '0.9rem', marginTop: '0.5rem' }}>CAR: {property.carNumber}</p>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            <img 
+              src={`${import.meta.env.BASE_URL}logo.png`} 
+              alt="Logo" 
+              style={{ width: '60px', height: '60px', borderRadius: '50%' }}
+              onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+            />
+            <div className="property-title">
+              <h2>Fazenda {property.ownerName}</h2>
+              <p>{property.municipality} - {property.state}</p>
+              <p style={{ fontFamily: 'monospace', fontSize: '0.9rem', marginTop: '0.25rem' }}>CAR: {property.carNumber}</p>
+            </div>
           </div>
           <div className="date" style={{ color: 'var(--text-light)', fontSize: '0.9rem' }}>
             Gerado em: {new Date().toLocaleDateString('pt-BR')}

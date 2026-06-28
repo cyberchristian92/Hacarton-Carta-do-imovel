@@ -24,8 +24,17 @@ const LandingPage = ({ onSearch, onGovbrClick }: LandingPageProps) => {
 
   return (
     <div className="landing">
-      <h1>Carta do Imóvel</h1>
-      <p>Entenda a situação da sua propriedade no CAR em 1 minuto</p>
+      <img 
+        src={`${import.meta.env.BASE_URL}logo.png`} 
+        alt="Carta do Imóvel Logo" 
+        style={{ width: '150px', height: '150px', objectFit: 'contain', marginBottom: '1rem', borderRadius: '50%' }}
+        onError={(e) => {
+          // Fallback if logo is missing
+          (e.target as HTMLImageElement).style.display = 'none';
+        }}
+      />
+      <h1 style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>Carta do Imóvel</h1>
+      <p style={{ fontSize: '1.1rem', marginBottom: '2.5rem' }}>Diagnóstico CAR Simplificado</p>
       
       <div className="card">
         <form onSubmit={handleSubmit}>
