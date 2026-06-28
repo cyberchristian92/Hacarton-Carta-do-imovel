@@ -3,10 +3,11 @@ import LandingPage from './pages/LandingPage';
 import LoadingPage from './pages/LoadingPage';
 import ReportPage from './pages/ReportPage';
 import DetailPage from './pages/DetailPage';
-import { mockProperties } from './mockData';
+import GovbrLoginPage from './pages/GovbrLoginPage';
+import { mockProperties, generateDynamicProperty } from './mockData';
 import type { PropertyData } from './mockData';
 
-export type AppState = 'landing' | 'loading' | 'report' | 'detail';
+export type AppState = 'landing' | 'govbr' | 'loading' | 'report' | 'detail';
 
 function App() {
   const [appState, setAppState] = useState<AppState>('landing');
@@ -23,7 +24,7 @@ function App() {
     
     // Simulate API call
     setTimeout(() => {
-      const foundProperty = mockProperties[car as keyof typeof mockProperties] || mockProperties['SP-1234567-89ABCDEF0123456789ABCDEF01234567']; // fallback to mock if not found
+      const foundProperty = mockProperties[car as keyof typeof mockProperties] || generateDynamicProperty(car);
       setProperty(foundProperty);
       setAppState('report');
     }, 3000);
@@ -38,6 +39,12 @@ function App() {
     setAppState('report');
   };
 
+  const handleGovbrLogin = (cpf: string) => {
+    // Faking a CAR number retrieval for the CPF
+    const fakeCarNumber = `BR-${cpf.replace(/\D/g, '')}-ABCD1234EFGH5678IJKL9012MNOP`;
+    handleSearch(fakeCarNumber);
+  };
+
   const handleReset = () => {
     setAppState('landing');
     setProperty(null);
@@ -45,7 +52,8 @@ function App() {
 
   return (
     <>
-      {appState === 'landing' && <LandingPage onSearch={handleSearch} />}
+      {appState === 'landing' && <LandingPage onSearch={handleSearch} onGovbrClick={() => setAppState('govbr')} />}
+      {appState === 'govbr' && <GovbrLoginPage onLogin={handleGovbrLogin} onCancel={handleReset} />}
       {appState === 'loading' && <LoadingPage />}
       {appState === 'report' && property && (
         <ReportPage 

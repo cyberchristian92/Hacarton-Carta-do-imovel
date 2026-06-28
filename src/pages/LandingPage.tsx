@@ -3,9 +3,10 @@ import { Search, UserCircle } from 'lucide-react';
 
 interface LandingPageProps {
   onSearch: (carNumber: string) => void;
+  onGovbrClick: () => void;
 }
 
-const LandingPage = ({ onSearch }: LandingPageProps) => {
+const LandingPage = ({ onSearch, onGovbrClick }: LandingPageProps) => {
   const [car, setCar] = useState('');
   const [cpf, setCpf] = useState('');
 
@@ -62,7 +63,7 @@ const LandingPage = ({ onSearch }: LandingPageProps) => {
             Preencher Dados de Demonstração (Demo)
           </button>
           
-          <button type="button" className="btn btn-secondary">
+          <button type="button" className="btn btn-secondary" onClick={onGovbrClick}>
             <UserCircle size={20} />
             Entrar com Gov.br
           </button>
