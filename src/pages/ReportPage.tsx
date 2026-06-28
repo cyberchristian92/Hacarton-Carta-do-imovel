@@ -47,12 +47,12 @@ const ReportPage = ({ property, onShowDetail, onReset }: ReportPageProps) => {
   const centerLng = (Math.min(...lngs) + Math.max(...lngs)) / 2;
 
   const handleDownloadPDF = () => {
-    alert("Funcionalidade de PDF seria gerada aqui com jsPDF");
+    window.print();
   };
 
   return (
     <div className="container">
-      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }} className="no-print">
         <button onClick={onReset} className="btn-secondary" style={{ padding: '0.5rem 1rem', border: 'none', background: 'transparent' }}>
           &larr; Nova Consulta
         </button>
@@ -201,16 +201,16 @@ const ReportPage = ({ property, onShowDetail, onReset }: ReportPageProps) => {
           Ela não substitui análise técnica do órgão ambiental.
         </p>
         
-        <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
+        <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }} className="no-print">
           <button className="btn" onClick={handleDownloadPDF} style={{ width: 'auto' }}>
             <Download size={20} />
             Baixar em PDF
           </button>
           
-          <button className="btn btn-secondary" style={{ width: 'auto' }}>
+          <a href={`https://wa.me/?text=${encodeURIComponent(`Veja a Carta do Imóvel da Fazenda ${property.ownerName} (CAR: ${property.carNumber}): https://cyberchristian92.github.io/Hacarton-Carta-do-imovel/`)}`} target="_blank" rel="noopener noreferrer" className="btn btn-secondary" style={{ width: 'auto', textDecoration: 'none' }}>
             <Share2 size={20} />
             Compartilhar com meu técnico
-          </button>
+          </a>
         </div>
       </div>
     </div>

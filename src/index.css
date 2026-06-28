@@ -375,3 +375,5 @@ body {
   padding-top: 2rem;
   border-top: 1px solid var(--border);
 }
+
+@media print { .no-print, .action-btn { display: none !important; } .container { padding: 0 !important; } .report-card { break-inside: avoid; border: 1px solid #ddd; } body { background-color: white; } }

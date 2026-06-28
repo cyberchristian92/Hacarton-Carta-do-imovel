@@ -38,15 +38,15 @@ const DetailPage = ({ title, description, steps, onBack }: DetailPageProps) => {
         </div>
 
         <div className="detail-actions">
-          <button className="btn" style={{ width: 'auto' }}>
+          <a href="https://car.gov.br/#/" target="_blank" rel="noopener noreferrer" className="btn" style={{ width: 'auto', textDecoration: 'none' }}>
             <ExternalLink size={20} />
             Acessar o SICAR para corrigir
-          </button>
+          </a>
           
-          <button className="btn btn-secondary" style={{ width: 'auto' }}>
+          <a href={`https://wa.me/5561999999999?text=${encodeURIComponent('Olá, preciso de ajuda para corrigir uma inconsistência no meu CAR: ' + title)}`} target="_blank" rel="noopener noreferrer" className="btn btn-secondary" style={{ width: 'auto', textDecoration: 'none' }}>
             <MessageCircle size={20} />
             Falar com técnico da EMATER
-          </button>
+          </a>
         </div>
       </div>
     </div>
